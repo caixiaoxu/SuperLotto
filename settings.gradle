@@ -1,0 +1,5 @@
+rootProject.name = "SuperLotto"
+include ':app'
+include ':lottoData'
+includeBuild 'VersionPlugin'
+include ':baseLib'

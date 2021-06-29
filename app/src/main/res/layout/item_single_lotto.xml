@@ -1,0 +1,130 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="item"
+            type="com.lsy.lottodata.db.entity.SelfLottoNumber" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="6dp">
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num1"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_item_lottery"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num2"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num2"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_item_lottery"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num1"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num3"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num1"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num1"
+            tools:text="2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num3"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_item_lottery"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num2"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num4"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num2"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num2"
+            tools:text="3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num4"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_item_lottery"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num3"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num5"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num3"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num3"
+            tools:text="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num5"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_item_lottery"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num4"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num6"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num4"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num4"
+            tools:text="3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num6"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/bg_item_lottery"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num5"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num7"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num5"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num5"
+            tools:text="6" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num7"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_item_lottery"
+            android:gravity="center"
+            android:textColor="@color/black"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num6"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num6"
+            tools:text="7" />
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

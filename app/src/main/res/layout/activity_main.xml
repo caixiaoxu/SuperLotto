@@ -1,0 +1,208 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.lsy.superlotto.MainViewModel" />
+    </data>
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="#084B8A"
+        tools:context=".MainActivity">
+
+
+        <ImageButton
+            android:id="@+id/ib_lotto_scan"
+            android:layout_width="45dp"
+            android:layout_height="45dp"
+            android:layout_margin="20dp"
+            android:background="@android:color/transparent"
+            android:src="@mipmap/icon_scan"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <View
+            android:id="@+id/bg_lottery"
+            android:layout_width="match_parent"
+            android:layout_height="80dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_lottery"
+            app:layout_constraintTop_toBottomOf="@id/ib_lotto_scan" />
+
+        <Button
+            android:id="@+id/btn_update_lotto"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:onClick="@{()->viewModel.loadLottery()}"
+            android:text="@string/refresh"
+            android:visibility="gone"
+            app:layout_constraintBottom_toBottomOf="@id/bg_lottery"
+            app:layout_constraintEnd_toEndOf="@id/bg_lottery"
+            app:layout_constraintStart_toStartOf="@id/bg_lottery"
+            app:layout_constraintTop_toTopOf="@id/bg_lottery" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_nper"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:text="@{@string/nper('1')}"
+            android:textSize="14sp"
+            app:layout_constraintStart_toStartOf="@id/bg_lottery"
+            app:layout_constraintTop_toTopOf="@id/bg_lottery"
+            tools:text="第1期" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num1"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:layout_marginTop="5dp"
+            android:background="@drawable/bg_lottery_front"
+            android:gravity="center"
+            android:text="@{viewModel.lottery.num1}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num2"
+            app:layout_constraintHorizontal_chainStyle="packed"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/tv_lottery_nper"
+            tools:text="1" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num2"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_lottery_front"
+            android:gravity="center"
+            android:text="@{viewModel.lottery.num2}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num1"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num3"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num1"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num1"
+            tools:text="2" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num3"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_lottery_front"
+            android:gravity="center"
+            android:text="@{viewModel.lottery.num3}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num2"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num4"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num2"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num2"
+            tools:text="3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num4"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_lottery_front"
+            android:gravity="center"
+            android:text="@{viewModel.lottery.num4}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num3"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num5"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num3"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num3"
+            tools:text="4" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num5"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_lottery_front"
+            android:gravity="center"
+            android:text="@{viewModel.lottery.num5}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num4"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num6"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num4"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num4"
+            tools:text="3" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num6"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="15dp"
+            android:background="@drawable/bg_lottery_back"
+            android:gravity="center"
+            android:text="@{viewModel.lottery.num6}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num5"
+            app:layout_constraintEnd_toStartOf="@id/tv_lottery_num7"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num5"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num5"
+            tools:text="6" />
+
+        <androidx.appcompat.widget.AppCompatTextView
+            android:id="@+id/tv_lottery_num7"
+            android:layout_width="@dimen/lottery_wh"
+            android:layout_height="@dimen/lottery_wh"
+            android:layout_marginStart="5dp"
+            android:background="@drawable/bg_lottery_back"
+            android:gravity="center"
+            android:text="@{viewModel.lottery.num7}"
+            android:textColor="@color/white"
+            android:textSize="18sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="@id/tv_lottery_num6"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/tv_lottery_num6"
+            app:layout_constraintTop_toTopOf="@id/tv_lottery_num6"
+            tools:text="7" />
+
+        <androidx.viewpager2.widget.ViewPager2
+            android:id="@+id/vp2_self_lotto"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_lottery"
+            android:padding="5dp"
+            app:layout_constraintTop_toBottomOf="@id/bg_lottery" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="120dp"
+            android:layout_marginStart="20dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="20dp"
+            android:background="@drawable/bg_lottery"
+            android:gravity="center"
+            android:textSize="18sp"
+            app:layout_constraintTop_toBottomOf="@id/vp2_self_lotto"
+            tools:text="中奖结果" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

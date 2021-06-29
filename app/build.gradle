@@ -1,0 +1,23 @@
+import com.frame.versionplugin.AndroidX
+
+plugins {
+    id 'com.android.application'
+    id 'version-plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    dataBinding {
+        enabled = true
+    }
+    kapt {
+        generateStubs = true
+    }
+}
+
+dependencies {
+    implementation project(path: ':lottoData')
+    implementation project(path: ':baseLib')
+
+    kapt AndroidX.roomCompiler
+}

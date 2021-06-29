@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">SuperLotto</string>
+    <string name="nper">第%1$s期</string>
+    <string name="refresh">刷新</string>
+    <string name="single_ticket">单式票</string>
+    <string name="double_ticket">复式票</string>
+</resources>

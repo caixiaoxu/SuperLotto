@@ -1,0 +1,33 @@
+plugins {
+    id 'com.android.library'
+    id 'version-plugin'
+    id 'kotlin-kapt'
+    id 'com.chaquo.python'
+}
+import com.frame.versionplugin.AndroidX
+import com.frame.versionplugin.Kotlin
+
+android {
+    defaultConfig {
+        ndk {
+            abiFilters "armeabi-v7a", "arm64-v8a"
+        }
+        python {
+            buildPython "D:/Python/Python39/python.exe"
+            pip {
+                install "requests"
+                install "lxml"
+            }
+        }
+    }
+
+}
+
+dependencies {
+    implementation project(path: ':baseLib')
+    api AndroidX.room
+    kapt AndroidX.roomCompiler
+    implementation AndroidX.roomKtx
+    implementation AndroidX.roomRxjava3
+    implementation Kotlin.kotlin_coroutines
+}
