@@ -27,8 +27,5 @@ class SingleTicketFragment :
     }
 
     override fun initData() {
-        singleLottoAdapter.addItem(SelfLottoNumber("1", "1", "1", "1"))
-        singleLottoAdapter.addItem(SelfLottoNumber("1", "1", "1", "1"))
-        singleLottoAdapter.notifyItemRangeInserted(0, 2)
     }
 }

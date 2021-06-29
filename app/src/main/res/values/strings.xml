@@ -4,4 +4,6 @@
     <string name="refresh">刷新</string>
     <string name="single_ticket">单式票</string>
     <string name="double_ticket">复式票</string>
+    <string name="ticket_empty_promt">还未添加彩票</string>
+    <string name="add">添加</string>
 </resources>

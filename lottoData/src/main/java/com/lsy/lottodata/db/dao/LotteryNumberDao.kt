@@ -12,10 +12,10 @@ import com.lsy.lottodata.db.entity.LotteryNumber
  */
 @Dao
 interface LotteryNumberDao {
-    @Query("SELECT * FROM Lottery")
+    @Query("SELECT * FROM Lottery ORDER BY nper")
     suspend fun getAll(): Array<LotteryNumber>
 
-    @Query("SELECT * FROM lottery LIMIT 1")
+    @Query("SELECT * FROM lottery ORDER BY nper DESC LIMIT 1")
     suspend fun getFirst(): LotteryNumber
 
     @Insert

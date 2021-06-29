@@ -1,10 +1,10 @@
-import com.frame.versionplugin.AndroidX
-
 plugins {
     id 'com.android.application'
     id 'version-plugin'
     id 'kotlin-kapt'
 }
+
+import com.frame.versionplugin.AndroidX
 
 android {
     dataBinding {

@@ -15,7 +15,7 @@ def requestLottery(dbPath, tableName):
     cursor = db.cursor()
 
     # 获取最新一条
-    sql = "SELECT * FROM %s LIMIT 1" % (tableName)
+    sql = "SELECT * FROM %s ORDER BY nper DESC LIMIT 1" % (tableName)
     cursor.execute(sql)
     last = cursor.fetchone()
     print("之前最新一条：", last)
@@ -39,7 +39,8 @@ def requestLottery(dbPath, tableName):
             if 7 == len(result):
                 # 写入
                 sql = "INSERT OR IGNORE INTO %s (nper,num1,num2,num3,num4,num5,num6,num7) VALUES ('%s','%s','%s','%s','%s','%s','%s','%s')" % (
-                    tableName, nper, result[0], result[1], result[2], result[3], result[4], result[5],
+                    tableName, nper, result[0], result[1], result[2], result[3], result[4],
+                    result[5],
                     result[6])
                 print("sql语句:" + sql)
                 cursor.execute(sql)
