@@ -10,7 +10,7 @@ import com.lsy.superlotto.databinding.FragmentDoubleTicketBinding
  *
  */
 class DoubleTicketFragment :
-    BaseFragment<FragmentDoubleTicketBinding, DoubleTicketViewModel>(DoubleTicketViewModel::class) {
+    BaseTicketFramgnet<FragmentDoubleTicketBinding, DoubleTicketViewModel>(DoubleTicketViewModel::class) {
     override fun layoutViewId(): Int = R.layout.fragment_double_ticket
     override fun initView() {
     }

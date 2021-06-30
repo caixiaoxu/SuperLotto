@@ -8,6 +8,7 @@ import com.lsy.lottodata.db.entity.LotteryNumber
 import com.lsy.lottodata.db.entity.LottoTicket
 import com.lsy.lottodata.pydocking.NetLottery
 import kotlinx.coroutines.launch
+import kotlin.math.sin
 
 /**
  * @author Xuwl
@@ -16,7 +17,9 @@ import kotlinx.coroutines.launch
  */
 class MainViewModel : ViewModel() {
     val lottery: MutableLiveData<LotteryNumber> = MutableLiveData()
-    val ticket: MutableLiveData<List<LottoTicket>> = MutableLiveData()
+    val ticketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
+    val singleTicketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
+    val doubleTicketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
 
     init {
         loadLatestData()
@@ -45,7 +48,7 @@ class MainViewModel : ViewModel() {
                 //两个期数相同，表示开奖号码和彩票对上了
                 lottery.postValue(first)
                 val latestList = DBManager.db.lottoTicketDao().getLatestList(latestNperStr!!)
-                ticket.postValue(latestList)
+                refreshTickList(latestList)
             } else {
                 if (lotteryNper > latestNper) {
                     //开奖号码期数最新(最新期没有买彩票)
@@ -53,10 +56,28 @@ class MainViewModel : ViewModel() {
                 } else {
                     //彩票期数最新(最新期还没开奖)
                     val latestList = DBManager.db.lottoTicketDao().getLatestList(latestNperStr!!)
-                    ticket.postValue(latestList)
+                    refreshTickList(latestList)
                 }
             }
         }
+    }
+
+    /**
+     * 刷新彩票列表
+     */
+    private fun refreshTickList(latestList: List<LottoTicket>) {
+        ticketList.postValue(latestList)
+        val singleList = ArrayList<LottoTicket>()
+        val doubleList = ArrayList<LottoTicket>()
+        latestList.forEach {
+            if (1 == it.type) {
+                doubleList.add(it)
+            } else {
+                singleList.add(it)
+            }
+        }
+        singleTicketList.postValue(singleList)
+        doubleTicketList.postValue(doubleList)
     }
 
     /**

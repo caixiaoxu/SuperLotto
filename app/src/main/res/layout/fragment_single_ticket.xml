@@ -1,13 +1,14 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android"
-    xmlns:app="http://schemas.android.com/apk/res-auto">
+    xmlns:tools="http://schemas.android.com/tools">
 
     <data>
+
+        <import type="android.view.View" />
 
         <variable
             name="viewModel"
             type="com.lsy.superlotto.fragments.SingleTicketViewModel" />
-
     </data>
 
     <LinearLayout
@@ -28,7 +29,13 @@
             android:id="@+id/rv_single_lotto"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
-            android:layout_marginTop="10dp" />
+            android:layout_marginTop="10dp"
+            android:visibility="@{0 == viewModel.mTicketList.size()?View.GONE:View.VISIBLE}" />
 
+        <include
+            android:id="@+id/view_single_empty"
+            layout="@layout/view_ticket_empty"
+            android:visibility="@{0 == viewModel.mTicketList.size()?View.VISIBLE:View.GONE}"
+            tools:visibility="gone" />
     </LinearLayout>
 </layout>

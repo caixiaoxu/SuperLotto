@@ -11,6 +11,6 @@ import com.lsy.lottodata.db.entity.SelfLottoNumber
  *
  */
 class SingleTicketViewModel : ViewModel() {
-    val mTicket: MutableLiveData<LottoTicket> = MutableLiveData()
+    val mTicketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
     val singleList: MutableList<SelfLottoNumber> = ArrayList()
 }

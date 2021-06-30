@@ -9,7 +9,7 @@ import com.lsy.superlotto.MainViewModel
  *
  */
 class MainLayoutEvent {
-    fun onAddLottoTicket(view: View,model:MainViewModel){
+    fun onAddLottoTicket(view: View) {
 
     }
 }

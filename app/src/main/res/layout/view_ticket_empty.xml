@@ -1,18 +1,10 @@
 <?xml version="1.0" encoding="utf-8"?>
 <layout xmlns:android="http://schemas.android.com/apk/res/android">
-
-    <data>
-
-        <variable
-            name="viewModel"
-            type="com.lsy.superlotto.MainViewModel" />
-
-        <variable
-            name="event"
-            type="com.lsy.superlotto.viewEvent.MainLayoutEvent" />
-    </data>
-
-    <merge>
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:orientation="vertical">
 
         <TextView
             android:layout_width="wrap_content"
@@ -20,10 +12,10 @@
             android:text="@string/ticket_empty_promt" />
 
         <Button
+            android:id="@+id/btn_add_ticket"
             android:layout_width="78dp"
             android:layout_height="40dp"
             android:layout_marginTop="10dp"
-            android:onClick="@{(view)->event.onAddLottoTicket(view,viewModel)}"
             android:text="@string/add" />
-    </merge>
+    </LinearLayout>
 </layout>
