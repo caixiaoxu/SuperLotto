@@ -9,6 +9,7 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelLazy
+import com.lsy.superlotto.BR
 import kotlin.reflect.KClass
 
 /**
@@ -30,6 +31,7 @@ abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel>(vmClasz: KClass
         savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, layoutViewId(), container, false)
+        binding?.setVariable(BR.viewModel, viewModel)
         binding?.lifecycleOwner = this
         initView()
         return binding?.root
