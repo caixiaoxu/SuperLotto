@@ -8,11 +8,11 @@ import androidx.room.Relation
  * @date 2021/6/24
  *
  */
-data class TicketAndLottery(
-    @Embedded val lottery: LotteryNumber,
+data class TicketAndLotto(
+    @Embedded val ticket: LottoTicket,
     @Relation(
         parentColumn = "nper",
         entityColumn = "nper"
     )
-    val ticket: LottoTicket,
+    val nums: List<LotteryNumber>,
 )

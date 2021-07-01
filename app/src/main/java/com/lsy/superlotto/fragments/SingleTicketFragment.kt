@@ -22,18 +22,27 @@ class SingleTicketFragment :
     override fun initView() {
         binding?.rvSingleLotto?.let { rv ->
             rv.layoutManager = LinearLayoutManager(context)
-            rv.adapter = SingleLottoAdapter(context, viewModel.singleList).apply {
+            rv.adapter = SingleLottoAdapter(context, null).apply {
                 singleLottoAdapter = this
             }
         }
         binding?.viewSingleEmpty?.btnAddTicket?.setOnClickListener {
-            addTicketDialog.show(childFragmentManager, addTicketDialog::class.java.simpleName) {
-                mMainViewModel.addLottoTicket(it)
+            addTicketDialog.show(childFragmentManager,
+                addTicketDialog::class.java.simpleName) { ticket, list ->
+                mMainViewModel.addLottoTicket(ticket, list)
             }
         }
     }
 
     override fun initData() {
-
+        viewModel.test.postValue("测试")
+        mMainViewModel.singleTicketList.observe(this) {
+            viewModel.mSingleList.postValue(it)
+        }
+        viewModel.mSingleList.observe(this) { list ->
+            binding?.rvSingleLotto?.adapter?.let { adapter ->
+                (adapter as SingleLottoAdapter).setList(list)
+            }
+        }
     }
 }

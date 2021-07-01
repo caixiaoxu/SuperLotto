@@ -30,6 +30,7 @@ abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel>(vmClasz: KClass
         savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, layoutViewId(), container, false)
+        binding?.lifecycleOwner = this
         initView()
         return binding?.root
     }

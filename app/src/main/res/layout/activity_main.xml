@@ -10,10 +10,6 @@
         <variable
             name="viewModel"
             type="com.lsy.superlotto.MainViewModel" />
-
-        <variable
-            name="event"
-            type="com.lsy.superlotto.viewEvent.MainLayoutEvent" />
     </data>
 
     <androidx.constraintlayout.widget.ConstraintLayout

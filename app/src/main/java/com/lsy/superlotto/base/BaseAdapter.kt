@@ -14,7 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
  *
  */
 abstract class BaseAdapter<T : ViewDataBinding, M>(
-    val mContext: Context?, list: MutableList<M>?,
+    val mContext: Context?, list: List<M>?,
 ) : RecyclerView.Adapter<BaseAdapter.BaseBindingViewHolder>() {
     protected val mList: MutableList<M> = ArrayList()
 
@@ -39,7 +39,7 @@ abstract class BaseAdapter<T : ViewDataBinding, M>(
 
     override fun getItemCount(): Int = mList.size
 
-    fun setList(list: MutableList<M>?) {
+    fun setList(list: List<M>?) {
         mList.clear()
         if (!list.isNullOrEmpty()) {
             mList.addAll(list)

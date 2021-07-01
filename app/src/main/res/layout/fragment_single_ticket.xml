@@ -3,7 +3,6 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <data>
-
         <import type="android.view.View" />
 
         <variable
@@ -30,12 +29,12 @@
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginTop="10dp"
-            android:visibility="@{0 == viewModel.mTicketList.size()?View.GONE:View.VISIBLE}" />
+            android:visibility="@{0 == viewModel.mSingleList.size()?View.GONE:View.VISIBLE}" />
 
         <include
             android:id="@+id/view_single_empty"
             layout="@layout/view_ticket_empty"
-            android:visibility="@{0 == viewModel.mTicketList.size()?View.VISIBLE:View.GONE}"
+            android:visibility="@{0 == viewModel.mSingleList.size()?View.VISIBLE:View.GONE}"
             tools:visibility="gone" />
     </LinearLayout>
 </layout>

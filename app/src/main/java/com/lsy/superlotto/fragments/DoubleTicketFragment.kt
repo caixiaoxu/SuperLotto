@@ -18,8 +18,9 @@ class DoubleTicketFragment :
     override fun initView() {
 
         binding?.viewDoubleEmpty?.btnAddTicket?.setOnClickListener {
-            addTicketDialog.show(childFragmentManager, addTicketDialog::class.java.simpleName) {
-                mMainViewModel.addLottoTicket(it)
+            addTicketDialog.show(childFragmentManager,
+                addTicketDialog::class.java.simpleName) { ticket, list ->
+                mMainViewModel.addLottoTicket(ticket, list)
             }
         }
     }

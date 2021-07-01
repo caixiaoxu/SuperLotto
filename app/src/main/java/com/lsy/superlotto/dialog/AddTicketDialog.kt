@@ -9,12 +9,14 @@ import androidx.fragment.app.FragmentManager
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lsy.baselib.utils.SizeUtil
 import com.lsy.baselib.utils.ToastUtil
+import com.lsy.lottodata.db.entity.LottoTicket
 import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.superlotto.Common
 import com.lsy.superlotto.R
 import com.lsy.superlotto.adapter.AddLottoAdapter
 import com.lsy.superlotto.databinding.DialogAddTicketBinding
+import java.util.*
 
 
 /**
@@ -23,7 +25,7 @@ import com.lsy.superlotto.databinding.DialogAddTicketBinding
  *
  */
 class AddTicketDialog(private val ticketType: EnumLottoType) : DialogFragment() {
-    protected var callBack: ((List<SelfLottoNumber>) -> Unit)? = null
+    protected var callBack: ((LottoTicket, MutableList<SelfLottoNumber>) -> Unit)? = null
     private lateinit var binding: DialogAddTicketBinding
 
     init {
@@ -95,11 +97,15 @@ class AddTicketDialog(private val ticketType: EnumLottoType) : DialogFragment() 
                     no = noStr
                 }
             }
-            callBack?.let { it(list) }
+            callBack?.let { it(LottoTicket(noStr, ticketType, nperStr, Date()), list) }
+            dismiss()
         }
     }
 
-    fun show(manager: FragmentManager, tag: String?, callBack: (List<SelfLottoNumber>) -> Unit) {
+    fun show(
+        manager: FragmentManager, tag: String?,
+        callBack: (LottoTicket, MutableList<SelfLottoNumber>) -> Unit,
+    ) {
         super.show(manager, tag)
         this.callBack = callBack
     }

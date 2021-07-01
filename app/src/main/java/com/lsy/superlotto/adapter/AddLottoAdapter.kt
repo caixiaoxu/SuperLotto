@@ -39,7 +39,7 @@ class AddLottoAdapter(mContext: Context?) :
     /**
      * 获取一行初始化的数据
      */
-    private fun getInitLottoNumber() = SelfLottoNumber(mList.size, "", "", "", "")
+    private fun getInitLottoNumber() = SelfLottoNumber("", "", "", "")
 
     fun getLottoNumberList() = mList
 }

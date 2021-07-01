@@ -1,6 +1,5 @@
 package com.lsy.lottodata.db.entity
 
-import androidx.room.AutoMigration
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
@@ -13,9 +12,16 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "SelfLotto")
 data class SelfLottoNumber(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
-    @ColumnInfo var no: String,
-    @ColumnInfo var nper: String,
-    @ColumnInfo var front: String,
-    @ColumnInfo var back: String,
-) {}
+    val id: Int = -1,
+    @ColumnInfo var no: String = "",
+    @ColumnInfo var nper: String = "",
+    @ColumnInfo var front: String = "",
+    @ColumnInfo var back: String = "",
+) {
+    constructor(no: String, nper: String, front: String, back: String) : this() {
+        this.no = no
+        this.nper = nper
+        this.front = front
+        this.back = back
+    }
+}

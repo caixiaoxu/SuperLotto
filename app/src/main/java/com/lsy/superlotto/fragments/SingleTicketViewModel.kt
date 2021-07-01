@@ -2,8 +2,7 @@ package com.lsy.superlotto.fragments
 
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
-import com.lsy.lottodata.db.entity.LottoTicket
-import com.lsy.lottodata.db.entity.SelfLottoNumber
+import com.lsy.lottodata.db.entity.TicketAndLotto
 
 /**
  * @author Xuwl
@@ -11,6 +10,6 @@ import com.lsy.lottodata.db.entity.SelfLottoNumber
  *
  */
 class SingleTicketViewModel : ViewModel() {
-    val mTicketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
-    val singleList: MutableList<SelfLottoNumber> = ArrayList()
+    val mSingleList: MutableLiveData<List<TicketAndLotto>> = MutableLiveData()
+    val test:MutableLiveData<String> = MutableLiveData()
 }
