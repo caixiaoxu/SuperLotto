@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:gravity="center_horizontal"
+        android:orientation="vertical"
+        android:padding="5dp">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <ImageButton
+                android:id="@+id/ib_add_ticket_close"
+                android:layout_width="42dp"
+                android:layout_height="42dp"
+                android:background="@android:color/transparent"
+                android:src="@android:drawable/btn_dialog"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <Button
+                android:id="@+id/btn_add_ticket_finish"
+                android:layout_width="64dp"
+                android:layout_height="42dp"
+                android:text="完成"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_ticket_no"
+                android:layout_width="0dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="10dp"
+                android:background="@drawable/bg_lotto_input"
+                android:gravity="center_vertical"
+                android:hint="编号"
+                android:digits="0123456789-"
+                android:inputType="number"
+                android:maxLength="27"
+                android:maxLines="1"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="#848484"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toStartOf="@id/et_ticket_nper"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/ib_add_ticket_close"
+                tools:text="123456-123456-123456-123456" />
+
+            <androidx.appcompat.widget.AppCompatEditText
+                android:id="@+id/et_ticket_nper"
+                android:layout_width="64dp"
+                android:layout_height="42dp"
+                android:layout_marginStart="5dp"
+                android:layout_marginEnd="10dp"
+                android:background="@drawable/bg_lotto_input"
+                android:gravity="center"
+                android:hint="期数"
+                android:inputType="number"
+                android:maxLength="27"
+                android:maxLines="1"
+                android:paddingStart="5dp"
+                android:paddingEnd="5dp"
+                android:textColor="@color/black"
+                android:textColorHint="#848484"
+                android:textSize="14sp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toEndOf="@id/et_ticket_no"
+                app:layout_constraintTop_toTopOf="@id/et_ticket_no"
+                tools:text="210321" />
+        </androidx.constraintlayout.widget.ConstraintLayout>
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_ticket_item"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="10dp" />
+
+        <ImageButton
+            android:id="@+id/ib_ticket_lotto_add"
+            android:layout_width="42dp"
+            android:layout_height="42dp"
+            android:layout_marginTop="10dp"
+            android:background="@android:color/transparent"
+            android:src="@android:drawable/ic_input_add" />
+    </LinearLayout>
+</layout>

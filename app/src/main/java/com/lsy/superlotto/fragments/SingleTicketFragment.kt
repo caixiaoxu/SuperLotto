@@ -1,13 +1,11 @@
 package com.lsy.superlotto.fragments
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lsy.lottodata.db.entity.SelfLottoNumber
-import com.lsy.superlotto.BR
+import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.superlotto.R
 import com.lsy.superlotto.adapter.SingleLottoAdapter
-import com.lsy.superlotto.base.BaseFragment
 import com.lsy.superlotto.databinding.FragmentSingleTicketBinding
-import com.lsy.superlotto.viewEvent.MainLayoutEvent
+import com.lsy.superlotto.dialog.AddTicketDialog
 
 /**
  * @author Xuwl
@@ -16,6 +14,7 @@ import com.lsy.superlotto.viewEvent.MainLayoutEvent
  */
 class SingleTicketFragment :
     BaseTicketFramgnet<FragmentSingleTicketBinding, SingleTicketViewModel>(SingleTicketViewModel::class) {
+    protected val addTicketDialog: AddTicketDialog by lazy { AddTicketDialog(EnumLottoType.SINGLE) }
     private lateinit var singleLottoAdapter: SingleLottoAdapter
 
     override fun layoutViewId(): Int = R.layout.fragment_single_ticket
@@ -28,10 +27,13 @@ class SingleTicketFragment :
             }
         }
         binding?.viewSingleEmpty?.btnAddTicket?.setOnClickListener {
-            mMainViewModel.addLottoTicket()
+            addTicketDialog.show(childFragmentManager, addTicketDialog::class.java.simpleName) {
+                mMainViewModel.addLottoTicket(it)
+            }
         }
     }
 
     override fun initData() {
+
     }
 }

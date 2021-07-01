@@ -1,6 +1,7 @@
 package com.lsy.lottodata.db
 
 import androidx.room.TypeConverter
+import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import java.util.*
 
 /**
@@ -17,5 +18,15 @@ class Converters {
     @TypeConverter
     fun dateToTimestamp(date: Date?): Long? {
         return date?.time
+    }
+
+    @TypeConverter
+    fun fromEnumLottoType(value: String?): EnumLottoType? {
+        return value?.let { EnumLottoType.valueOf(it) }
+    }
+
+    @TypeConverter
+    fun dateToEnumLottoType(date: EnumLottoType?): String? {
+        return date?.name
     }
 }

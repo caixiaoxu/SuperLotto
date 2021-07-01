@@ -14,10 +14,13 @@ import androidx.recyclerview.widget.RecyclerView
  *
  */
 abstract class BaseAdapter<T : ViewDataBinding, M>(
-    val mContext: Context?,
-    val mList: MutableList<M>,
-) :
-    RecyclerView.Adapter<BaseAdapter.BaseBindingViewHolder>() {
+    val mContext: Context?, list: MutableList<M>?,
+) : RecyclerView.Adapter<BaseAdapter.BaseBindingViewHolder>() {
+    protected val mList: MutableList<M> = ArrayList()
+
+    init {
+        setList(list)
+    }
 
     abstract fun getItemLayoutId(viewType: Int): Int
 
@@ -31,13 +34,16 @@ abstract class BaseAdapter<T : ViewDataBinding, M>(
 
     override fun onBindViewHolder(holder: BaseBindingViewHolder, position: Int) {
         val binding: T? = DataBindingUtil.getBinding(holder.itemView)
+        onBindItem(binding, mList[position])
     }
 
     override fun getItemCount(): Int = mList.size
 
-    fun setList(list: MutableList<M>) {
+    fun setList(list: MutableList<M>?) {
         mList.clear()
-        mList.addAll(list)
+        if (!list.isNullOrEmpty()) {
+            mList.addAll(list)
+        }
         notifyDataSetChanged()
     }
 

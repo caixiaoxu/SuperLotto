@@ -6,4 +6,5 @@
     <string name="double_ticket">复式票</string>
     <string name="ticket_empty_promt">还未添加彩票</string>
     <string name="add">添加</string>
+    <string name="lotto_input_hint">以逗号分隔</string>
 </resources>

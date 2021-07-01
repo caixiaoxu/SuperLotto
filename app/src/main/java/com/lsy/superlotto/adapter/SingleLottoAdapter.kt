@@ -11,7 +11,7 @@ import com.lsy.superlotto.databinding.ItemSingleLottoBinding
  * @date 2021/6/25
  *
  */
-class SingleLottoAdapter(mContext: Context?, mList: MutableList<SelfLottoNumber>) :
+class SingleLottoAdapter(mContext: Context?, mList: MutableList<SelfLottoNumber>?) :
     BaseAdapter<ItemSingleLottoBinding, SelfLottoNumber>(mContext, mList) {
 
     override fun getItemLayoutId(viewType: Int): Int = R.layout.item_single_lotto

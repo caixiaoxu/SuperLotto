@@ -14,8 +14,8 @@ import androidx.room.PrimaryKey
 data class SelfLottoNumber(
     @PrimaryKey(autoGenerate = true)
     val id: Int,
-    @ColumnInfo val no: String,
-    @ColumnInfo val nper: String,
-    @ColumnInfo val front: String,
-    @ColumnInfo val back: String,
+    @ColumnInfo var no: String,
+    @ColumnInfo var nper: String,
+    @ColumnInfo var front: String,
+    @ColumnInfo var back: String,
 ) {}

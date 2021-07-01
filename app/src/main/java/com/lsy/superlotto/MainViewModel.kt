@@ -6,9 +6,10 @@ import androidx.lifecycle.viewModelScope
 import com.lsy.lottodata.db.DBManager
 import com.lsy.lottodata.db.entity.LotteryNumber
 import com.lsy.lottodata.db.entity.LottoTicket
+import com.lsy.lottodata.db.entity.SelfLottoNumber
+import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.lottodata.pydocking.NetLottery
 import kotlinx.coroutines.launch
-import kotlin.math.sin
 
 /**
  * @author Xuwl
@@ -70,7 +71,7 @@ class MainViewModel : ViewModel() {
         val singleList = ArrayList<LottoTicket>()
         val doubleList = ArrayList<LottoTicket>()
         latestList.forEach {
-            if (1 == it.type) {
+            if (EnumLottoType.DOUBLE == it.type) {
                 doubleList.add(it)
             } else {
                 singleList.add(it)
@@ -83,7 +84,7 @@ class MainViewModel : ViewModel() {
     /**
      * 添加乐透彩票
      */
-    fun addLottoTicket() {
+    fun addLottoTicket(list: List<SelfLottoNumber>) {
 
     }
 }

@@ -3,6 +3,7 @@ package com.lsy.lottodata.db.entity
 import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
+import com.lsy.lottodata.db.entity.enums.EnumLottoType
 
 /**
  * @author Xuwl
@@ -12,7 +13,7 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "LottoTicket")
 data class LottoTicket(
     @PrimaryKey val no: String,
-    @ColumnInfo val type: Int,//0单式票，1复式票
+    @ColumnInfo val type: EnumLottoType,//0单式票，1复式票
     @ColumnInfo val nper: String,
     @ColumnInfo val date: java.util.Date,
 ) {
