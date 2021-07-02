@@ -4,6 +4,7 @@ import androidx.room.ColumnInfo
 import androidx.room.Entity
 import androidx.room.PrimaryKey
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
+import java.util.*
 
 /**
  * @author Xuwl
@@ -15,7 +16,7 @@ data class LottoTicket(
     @PrimaryKey val no: String,
     @ColumnInfo val type: EnumLottoType,//0单式票，1复式票
     @ColumnInfo val nper: String,
-    @ColumnInfo val date: java.util.Date,
+    @ColumnInfo val date: Date,
 ) {
     override fun hashCode(): Int {
         return super.hashCode()

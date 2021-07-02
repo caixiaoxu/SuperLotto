@@ -7,7 +7,6 @@ import com.lsy.lottodata.db.DBManager
 import com.lsy.lottodata.db.entity.LotteryNumber
 import com.lsy.lottodata.db.entity.LottoTicket
 import com.lsy.lottodata.db.entity.SelfLottoNumber
-import com.lsy.lottodata.db.entity.TicketAndLotto
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.lottodata.pydocking.NetLottery
 import kotlinx.coroutines.launch
@@ -19,9 +18,9 @@ import kotlinx.coroutines.launch
  */
 class MainViewModel : ViewModel() {
     val lottery: MutableLiveData<LotteryNumber> = MutableLiveData()
-    val ticketList: MutableLiveData<List<TicketAndLotto>> = MutableLiveData()
-    val singleTicketList: MutableLiveData<List<TicketAndLotto>> = MutableLiveData()
-    val doubleTicketList: MutableLiveData<List<TicketAndLotto>> = MutableLiveData()
+    val ticketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
+    val singleTicketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
+    val doubleTicketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
 
     init {
         loadLatestData()
@@ -32,8 +31,8 @@ class MainViewModel : ViewModel() {
      */
     fun loadLatestData() {
         viewModelScope.launch() {
-            //初始化表
-            DBManager.createLotteryTable()
+            //先查一次，如果没有表会创建表
+            DBManager.db.lotteryNumberDao().getFirst()
             //采集最新数据
             NetLottery.callLottery(DBManager.dbPath, DBManager.TABLE_LOTTERY_NAME)
             //取出最新的开奖号码
@@ -50,7 +49,7 @@ class MainViewModel : ViewModel() {
                 //两个期数相同，表示开奖号码和彩票对上了
                 lottery.postValue(first)
                 val latestList =
-                    DBManager.db.ticketAndLottoDao().getTicketWithLotto(latestNper.toString())
+                    DBManager.db.lottoTicketDao().getLatestList(latestNper.toString())
                 refreshTickList(latestList)
             } else {
                 if (lotteryNper > latestNper) {
@@ -59,7 +58,7 @@ class MainViewModel : ViewModel() {
                 } else {
                     //彩票期数最新(最新期还没开奖)
                     val latestList =
-                        DBManager.db.ticketAndLottoDao().getTicketWithLotto(latestNper.toString())
+                        DBManager.db.lottoTicketDao().getLatestList(latestNper.toString())
                     refreshTickList(latestList)
                 }
             }
@@ -69,12 +68,12 @@ class MainViewModel : ViewModel() {
     /**
      * 刷新彩票列表
      */
-    private fun refreshTickList(latestList: List<TicketAndLotto>) {
+    private fun refreshTickList(latestList: List<LottoTicket>) {
         ticketList.postValue(latestList)
-        val singleList = ArrayList<TicketAndLotto>()
-        val doubleList = ArrayList<TicketAndLotto>()
+        val singleList = ArrayList<LottoTicket>()
+        val doubleList = ArrayList<LottoTicket>()
         latestList.forEach {
-            if (EnumLottoType.DOUBLE == it.ticket.type) {
+            if (EnumLottoType.DOUBLE == it.type) {
                 doubleList.add(it)
             } else {
                 singleList.add(it)
@@ -91,6 +90,7 @@ class MainViewModel : ViewModel() {
         viewModelScope.launch {
             DBManager.db.lottoTicketDao().insertLottoTable(ticket)
             DBManager.db.selfLottoNumberDao().insertLottoNumber(list)
+            loadLatestData()
         }
     }
 }

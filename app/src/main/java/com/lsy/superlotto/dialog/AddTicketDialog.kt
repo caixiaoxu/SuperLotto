@@ -84,8 +84,8 @@ class AddTicketDialog(private val ticketType: EnumLottoType) : DialogFragment() 
                     continue
                 }
 
-                val arr = number.front.split(Common.lottoSplit)
-                val arr1 = number.back.split(Common.lottoSplit)
+                val arr = number.front.split(Common.LOTTO_SPLIT)
+                val arr1 = number.back.split(Common.LOTTO_SPLIT)
                 if ((EnumLottoType.SINGLE == ticketType && (5 != arr.size || 2 != arr1.size))
                     || (EnumLottoType.SINGLE == ticketType && (arr.size < 5 || 2 > arr1.size))
                 ) {

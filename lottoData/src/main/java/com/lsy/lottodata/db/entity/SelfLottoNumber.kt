@@ -12,13 +12,13 @@ import androidx.room.PrimaryKey
 @Entity(tableName = "SelfLotto")
 data class SelfLottoNumber(
     @PrimaryKey(autoGenerate = true)
-    val id: Int = -1,
+    val id: Int?,
     @ColumnInfo var no: String = "",
     @ColumnInfo var nper: String = "",
     @ColumnInfo var front: String = "",
     @ColumnInfo var back: String = "",
 ) {
-    constructor(no: String, nper: String, front: String, back: String) : this() {
+    constructor(no: String, nper: String, front: String, back: String) : this(null) {
         this.no = no
         this.nper = nper
         this.front = front

@@ -2,7 +2,7 @@ package com.lsy.superlotto.fragments
 
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.superlotto.R
-import com.lsy.superlotto.databinding.FragmentDoubleTicketBinding
+import com.lsy.superlotto.databinding.FragmentTicketBinding
 import com.lsy.superlotto.dialog.AddTicketDialog
 
 /**
@@ -11,17 +11,20 @@ import com.lsy.superlotto.dialog.AddTicketDialog
  *
  */
 class DoubleTicketFragment :
-    BaseTicketFramgnet<FragmentDoubleTicketBinding, DoubleTicketViewModel>(DoubleTicketViewModel::class) {
+    BaseTicketFramgnet<FragmentTicketBinding, DoubleTicketViewModel>(DoubleTicketViewModel::class) {
     protected val addTicketDialog: AddTicketDialog by lazy { AddTicketDialog(EnumLottoType.DOUBLE) }
 
-    override fun layoutViewId(): Int = R.layout.fragment_double_ticket
+    override fun layoutViewId(): Int = R.layout.fragment_ticket
     override fun initView() {
 
-        binding?.viewDoubleEmpty?.btnAddTicket?.setOnClickListener {
-            addTicketDialog.show(childFragmentManager,
-                addTicketDialog::class.java.simpleName) { ticket, list ->
-                mMainViewModel.addLottoTicket(ticket, list)
-            }
+        binding?.btnAddTicket?.setOnClickListener { addTicket() }
+        binding?.ibAddTicket?.setOnClickListener { addTicket() }
+    }
+
+    private fun addTicket() {
+        addTicketDialog.show(childFragmentManager,
+            addTicketDialog::class.java.simpleName) { ticket, list ->
+            mMainViewModel.addLottoTicket(ticket, list)
         }
     }
 

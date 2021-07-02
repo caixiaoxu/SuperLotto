@@ -6,5 +6,5 @@ package com.lsy.superlotto
  *
  */
 object Common {
-    const val lottoSplit = ","
+    const val LOTTO_SPLIT = ","
 }

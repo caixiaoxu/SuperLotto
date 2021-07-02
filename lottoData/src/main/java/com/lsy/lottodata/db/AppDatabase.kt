@@ -6,7 +6,6 @@ import androidx.room.TypeConverters
 import com.lsy.lottodata.db.dao.LotteryNumberDao
 import com.lsy.lottodata.db.dao.LottoTicketDao
 import com.lsy.lottodata.db.dao.SelfLottoNumberDao
-import com.lsy.lottodata.db.dao.TicketAndLottoDao
 import com.lsy.lottodata.db.entity.LotteryNumber
 import com.lsy.lottodata.db.entity.LottoTicket
 import com.lsy.lottodata.db.entity.SelfLottoNumber
@@ -23,5 +22,4 @@ abstract class AppDatabase : RoomDatabase() {
     abstract fun lotteryNumberDao(): LotteryNumberDao
     abstract fun lottoTicketDao(): LottoTicketDao
     abstract fun selfLottoNumberDao(): SelfLottoNumberDao
-    abstract fun ticketAndLottoDao(): TicketAndLottoDao
 }

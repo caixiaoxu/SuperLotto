@@ -24,7 +24,7 @@ abstract class BaseAdapter<T : ViewDataBinding, M>(
 
     abstract fun getItemLayoutId(viewType: Int): Int
 
-    protected abstract fun onBindItem(binding: T?, item: M)
+    protected abstract fun onBindItem(binding: T?, item: M?)
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseBindingViewHolder {
         val binding: T = DataBindingUtil.inflate(LayoutInflater.from(this.mContext),

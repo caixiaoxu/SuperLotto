@@ -2,7 +2,6 @@ import requests
 from lxml import etree
 import sqlite3
 
-
 def requestLottery(dbPath, tableName):
     # 获取期数列表
     r = requests.get("http://kaijiang.500.com/dlt.shtml")

@@ -20,7 +20,7 @@ class AddLottoAdapter(mContext: Context?) :
 
     override fun getItemLayoutId(viewType: Int): Int = R.layout.item_add_ticket
 
-    override fun onBindItem(binding: ItemAddTicketBinding?, item: SelfLottoNumber) {
+    override fun onBindItem(binding: ItemAddTicketBinding?, item: SelfLottoNumber?) {
         binding?.setVariable(BR.model, item)
     }
 
