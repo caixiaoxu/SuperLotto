@@ -37,14 +37,10 @@ class SingleTicketFragment :
     }
 
     private fun addTicket() {
-//        addTicketDialog.show(childFragmentManager,
-//            addTicketDialog::class.java.simpleName) { ticket, list ->
-//        mMainViewModel.addLottoTicket(ticket, list)
-        mMainViewModel.addLottoTicket(LottoTicket("112111-111111-111111-111111",
-            EnumLottoType.SINGLE, "21075", Date()), arrayListOf(
-            SelfLottoNumber("112111-111111-111111-111111", "21075", "01,02,03,04,05", "01,02")
-        ))
-//        }
+        addTicketDialog.show(childFragmentManager,
+            addTicketDialog::class.java.simpleName) { ticket, list ->
+            mMainViewModel.addLottoTicket(ticket, list)
+        }
     }
 
     override fun initData() {
