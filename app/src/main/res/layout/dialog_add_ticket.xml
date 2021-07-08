@@ -42,7 +42,7 @@
                 android:gravity="center_vertical"
                 android:hint="编号"
                 android:digits="0123456789-"
-                android:inputType="number"
+                android:inputType="textCapCharacters"
                 android:maxLength="27"
                 android:maxLines="1"
                 android:paddingStart="5dp"
