@@ -28,6 +28,7 @@ dependencies {
     api AndroidX.room
     kapt AndroidX.roomCompiler
     implementation AndroidX.roomKtx
-    implementation AndroidX.roomRxjava3
+    implementation AndroidX.roomGuava
+//    implementation AndroidX.roomRxjava3
     implementation Kotlin.kotlin_coroutines
 }

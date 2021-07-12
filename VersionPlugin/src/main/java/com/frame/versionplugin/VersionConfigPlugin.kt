@@ -144,6 +144,7 @@ class VersionConfigPlugin : Plugin<Project> {
             add(implementation, AndroidX.activityKtx)
             add(implementation, AndroidX.fragmentKtx)
             add(implementation, AndroidX.constraintlayout)
+            add(implementation, AndroidX.livedataKtx)
             add(implementation, Google.material)
             configTestDependencies()
         }

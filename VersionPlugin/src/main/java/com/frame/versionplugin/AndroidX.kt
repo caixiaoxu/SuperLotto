@@ -16,10 +16,12 @@ object AndroidX {
     const val coreKtx = "androidx.core:core-ktx:1.3.1"
     const val activityKtx = "androidx.activity:activity-ktx:1.2.3"
     const val fragmentKtx = "androidx.fragment:fragment-ktx:1.3.4"
+    const val livedataKtx = "androidx.lifecycle:lifecycle-livedata-ktx:2.2.0"
 
     val room_version = "2.3.0"
     val room = "androidx.room:room-runtime:$room_version"
     val roomCompiler = "androidx.room:room-compiler:$room_version"
     val roomKtx = "androidx.room:room-ktx:$room_version"
     val roomRxjava3 = "androidx.room:room-rxjava3:$room_version"
+    val roomGuava = "androidx.room:room-guava:$room_version"
 }

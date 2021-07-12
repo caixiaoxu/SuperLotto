@@ -1,8 +1,6 @@
 package com.lsy.superlotto
 
-import androidx.lifecycle.MutableLiveData
-import androidx.lifecycle.ViewModel
-import androidx.lifecycle.viewModelScope
+import androidx.lifecycle.*
 import com.lsy.lottodata.db.DBManager
 import com.lsy.lottodata.db.entity.LotteryNumber
 import com.lsy.lottodata.db.entity.LottoTicket
@@ -10,6 +8,8 @@ import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.lottodata.pydocking.NetLottery
 import kotlinx.coroutines.launch
+import java.util.*
+import kotlin.collections.ArrayList
 
 /**
  * @author Xuwl
@@ -31,13 +31,15 @@ class MainViewModel : ViewModel() {
      */
     fun loadLatestData() {
         viewModelScope.launch() {
-            //先查一次，如果没有表会创建表
-            DBManager.db.lotteryNumberDao().getFirst()
+            //表里最新的期数
+            var last = DBManager.db.lotteryNumberDao().getFirst()
+
             //采集最新数据
-            NetLottery.callLottery(DBManager.dbPath, DBManager.TABLE_LOTTERY_NAME)
+            NetLottery.callLottery(last.nper)
+
             //取出最新的开奖号码
-            val first = DBManager.db.lotteryNumberDao().getFirst()
-            val lotteryNper = first.nper.toIntOrNull() ?: -1
+            last = DBManager.db.lotteryNumberDao().getFirst()
+            val lotteryNper = last.nper.toIntOrNull() ?: -1
             //取出最新的彩票
             val latestNperStr = DBManager.db.lottoTicketDao().getLatestNper()
             val latestNper = latestNperStr?.toIntOrNull() ?: -1
@@ -47,14 +49,14 @@ class MainViewModel : ViewModel() {
             }
             if (lotteryNper == latestNper) {
                 //两个期数相同，表示开奖号码和彩票对上了
-                lottery.postValue(first)
+                lottery.postValue(last)
                 val latestList =
                     DBManager.db.lottoTicketDao().getLatestList(latestNper.toString())
                 refreshTickList(latestList)
             } else {
                 if (lotteryNper > latestNper) {
                     //开奖号码期数最新(最新期没有买彩票)
-                    lottery.postValue(first)
+                    lottery.postValue(last)
                 } else {
                     //彩票期数最新(最新期还没开奖)
                     val latestList =

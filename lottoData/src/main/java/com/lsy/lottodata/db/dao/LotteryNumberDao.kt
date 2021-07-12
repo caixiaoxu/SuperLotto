@@ -18,4 +18,10 @@ interface LotteryNumberDao {
 
     @Query("SELECT * FROM Lottery ORDER BY nper DESC LIMIT 1")
     suspend fun getFirst(): LotteryNumber
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLotterysTable(vararg lottery: LotteryNumber)
+
+    @Insert(onConflict = OnConflictStrategy.REPLACE)
+    suspend fun insertLotterysTable(lotter: List<LotteryNumber>)
 }

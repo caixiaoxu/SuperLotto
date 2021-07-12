@@ -1,17 +1,11 @@
 package com.lsy.superlotto.fragments
 
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.lsy.lottodata.db.DBManager
-import com.lsy.lottodata.db.entity.LottoTicket
-import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.superlotto.R
 import com.lsy.superlotto.adapter.SingleLottoAdapter
 import com.lsy.superlotto.databinding.FragmentTicketBinding
 import com.lsy.superlotto.dialog.AddTicketDialog
-import kotlinx.coroutines.GlobalScope
-import kotlinx.coroutines.launch
-import java.util.*
 
 /**
  * @author Xuwl
@@ -41,6 +35,11 @@ class SingleTicketFragment :
             addTicketDialog::class.java.simpleName) { ticket, list ->
             mMainViewModel.addLottoTicket(ticket, list)
         }
+
+//        mMainViewModel.addLottoTicket(LottoTicket("111111-111111-111111-111111",
+//            EnumLottoType.SINGLE, "21078", Date()),
+//            arrayListOf(SelfLottoNumber("111111-111111-111111-111111",
+//                "21078", "01,02,03,04,05", "01,02")))
     }
 
     override fun initData() {
