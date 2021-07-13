@@ -53,7 +53,9 @@ class SingleTicketFragment :
         }
         viewModel.mLottoList.observe(this) {
             (binding?.rvTicketLotto?.adapter as? SingleLottoAdapter)?.setList(it)
-            mMainViewModel.dealSingleWinResult(it)
+            if (!it.isNullOrEmpty()) {
+                mMainViewModel.dealSingleWinResult(it)
+            }
         }
     }
 }
