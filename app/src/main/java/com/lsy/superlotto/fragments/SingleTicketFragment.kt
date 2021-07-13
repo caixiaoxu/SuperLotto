@@ -24,6 +24,7 @@ class SingleTicketFragment :
             rv.layoutManager = LinearLayoutManager(context)
             rv.adapter = SingleLottoAdapter(context, null).apply {
                 singleLottoAdapter = this
+                mLotteryNumber = mMainViewModel.lottery.value
             }
         }
         binding?.btnAddTicket?.setOnClickListener { addTicket() }
@@ -43,6 +44,9 @@ class SingleTicketFragment :
     }
 
     override fun initData() {
+        mMainViewModel.lottery.observe(this) {
+            (binding?.rvTicketLotto?.adapter as? SingleLottoAdapter)?.mLotteryNumber = it
+        }
         mMainViewModel.singleTicketList.observe(this) {
             viewModel.mTicketList.postValue(it)
             viewModel.getTypeLottoList(it)
