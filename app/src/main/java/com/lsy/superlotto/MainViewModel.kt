@@ -102,27 +102,17 @@ class MainViewModel : ViewModel() {
     }
 
     /**
-     * 中奖结果
+     * 刷新结果信息
+     */
+    fun refreshWinResult() {
+        winString.postValue(resultMap[lottoType])
+    }
+
+    /**
+     * 单式票中奖结果
      * @param list 号码
      */
     fun dealSingleWinResult(list: List<SelfLottoNumber>) {
-        if (null == lottery.value) {
-            return
-        }
-
-        val winFront = arrayOf(
-            lottery.value!!.num1.toInt(),
-            lottery.value!!.num2.toInt(),
-            lottery.value!!.num3.toInt(),
-            lottery.value!!.num4.toInt(),
-            lottery.value!!.num5.toInt()
-        )
-
-        val winBack = arrayOf(
-            lottery.value!!.num6.toInt(),
-            lottery.value!!.num7.toInt()
-        )
-
         val frontLists = ArrayList<ArrayList<Int>>()
         val backLists = ArrayList<ArrayList<Int>>()
         list.forEach { lotto ->
@@ -141,6 +131,62 @@ class MainViewModel : ViewModel() {
                 e.printStackTrace()
             }
         }
+        resultMap[EnumLottoType.SINGLE] = dealWinResult(frontLists, backLists)
+        refreshWinResult()
+    }
+
+    /**
+     * 复式票中奖结果
+     * @param list 号码
+     */
+    fun dealDoubleWinResult(list: List<SelfLottoNumber>) {
+        val frontLists = ArrayList<ArrayList<Int>>()
+        val backLists = ArrayList<ArrayList<Int>>()
+        list.forEach { lotto ->
+            try {
+                val frontArr = lotto.front.split(Common.LOTTO_SPLIT)
+                val backArr = lotto.back.split(Common.LOTTO_SPLIT)
+                val frontList = ArrayList<Int>()
+                frontArr.forEach { frontList.add(it.toInt()) }
+                frontList.sort()
+                val backList = ArrayList<Int>()
+                backArr.forEach { backList.add(it.toInt()) }
+                backList.sort()
+                frontLists.add(frontList)
+                backLists.add(backList)
+            } catch (e: Exception) {
+                e.printStackTrace()
+            }
+        }
+        resultMap[EnumLottoType.DOUBLE] = dealWinResult(frontLists, backLists)
+        refreshWinResult()
+    }
+
+    /**
+     * 中奖结果分析
+     * @param frontLists 前区列表
+     * @param backLists 后区列表
+     */
+    private fun dealWinResult(
+        frontLists: ArrayList<ArrayList<Int>>,
+        backLists: ArrayList<ArrayList<Int>>,
+    ): String {
+        if (null == lottery.value) {
+            return ""
+        }
+
+        val winFront = arrayOf(
+            lottery.value!!.num1.toInt(),
+            lottery.value!!.num2.toInt(),
+            lottery.value!!.num3.toInt(),
+            lottery.value!!.num4.toInt(),
+            lottery.value!!.num5.toInt()
+        )
+
+        val winBack = arrayOf(
+            lottery.value!!.num6.toInt(),
+            lottery.value!!.num7.toInt()
+        )
 
         val winFrontCounts = IntArray(frontLists.size)
         val frontIndexs = IntArray(frontLists.size)
@@ -190,8 +236,7 @@ class MainViewModel : ViewModel() {
                 sb.append("${i}等奖-> ${winClass[i]}注\n")
             }
         }
-        resultMap[EnumLottoType.SINGLE] =
-            if (sb.isEmpty()) "未中奖" else sb.substring(0, sb.length - 1)
-        winString.postValue(resultMap[lottoType])
+
+        return if (sb.isEmpty()) "未中奖" else sb.substring(0, sb.length - 1)
     }
 }

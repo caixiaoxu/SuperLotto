@@ -15,7 +15,6 @@ import com.lsy.superlotto.dialog.AddTicketDialog
 class SingleTicketFragment :
     BaseTicketFramgnet<FragmentTicketBinding, SingleTicketViewModel>(SingleTicketViewModel::class) {
     protected val addTicketDialog: AddTicketDialog by lazy { AddTicketDialog(EnumLottoType.SINGLE) }
-    private lateinit var singleLottoAdapter: SingleLottoAdapter
 
     override fun layoutViewId(): Int = R.layout.fragment_ticket
 
@@ -23,7 +22,6 @@ class SingleTicketFragment :
         binding?.rvTicketLotto?.let { rv ->
             rv.layoutManager = LinearLayoutManager(context)
             rv.adapter = SingleLottoAdapter(context, null).apply {
-                singleLottoAdapter = this
                 mLotteryNumber = mMainViewModel.lottery.value
             }
         }
@@ -36,11 +34,6 @@ class SingleTicketFragment :
             addTicketDialog::class.java.simpleName) { ticket, list ->
             mMainViewModel.addLottoTicket(ticket, list)
         }
-
-//        mMainViewModel.addLottoTicket(LottoTicket("111111-111111-111111-111111",
-//            EnumLottoType.SINGLE, "21078", Date()),
-//            arrayListOf(SelfLottoNumber("111111-111111-111111-111111",
-//                "21078", "01,02,03,04,05", "01,02")))
     }
 
     override fun initData() {
