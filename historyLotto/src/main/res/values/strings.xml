@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="history_title">历史开奖</string>
+    <string name="statistics">汇总统计</string>
+
+    <string name="select_time">选择时间</string>
+
+    <string-array name="lotto_time">
+        <item>一年内</item>
+        <item>二年内</item>
+        <item>三年内</item>
+    </string-array>
+</resources>
