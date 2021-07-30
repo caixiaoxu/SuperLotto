@@ -1,4 +1,4 @@
-package com.lsy.superlotto.base
+package com.lsy.baselib.base
 
 import android.os.Bundle
 import android.view.LayoutInflater
@@ -9,7 +9,6 @@ import androidx.databinding.ViewDataBinding
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelLazy
-import com.lsy.superlotto.BR
 import kotlin.reflect.KClass
 
 /**
@@ -25,13 +24,15 @@ abstract class BaseFragment<T : ViewDataBinding, VM : ViewModel>(vmClasz: KClass
 
     abstract fun layoutViewId(): Int
 
+    abstract fun variableId(): Int
+
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?,
     ): View? {
         binding = DataBindingUtil.inflate(layoutInflater, layoutViewId(), container, false)
-        binding?.setVariable(BR.viewModel, viewModel)
+        binding?.setVariable(variableId(), viewModel)
         binding?.lifecycleOwner = this
         initView()
         return binding?.root

@@ -4,7 +4,7 @@ import android.content.Context
 import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.superlotto.BR
 import com.lsy.superlotto.R
-import com.lsy.superlotto.base.BaseAdapter
+import com.lsy.baselib.base.BaseAdapter
 import com.lsy.superlotto.databinding.ItemAddTicketBinding
 
 /**

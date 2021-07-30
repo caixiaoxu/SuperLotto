@@ -4,14 +4,14 @@ import android.os.Bundle
 import androidx.viewpager2.widget.ViewPager2
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.superlotto.adapter.LottoAdapter
-import com.lsy.superlotto.base.BaseActivity
+import com.lsy.baselib.base.BaseActivity
 import com.lsy.superlotto.databinding.ActivityMainBinding
 
 class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(MainViewModel::class) {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setBindingView(R.layout.activity_main, viewModel)
+        setBindingView(R.layout.activity_main, BR.viewModel, viewModel)
         initViewPager2()
     }
 

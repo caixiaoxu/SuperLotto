@@ -1,4 +1,4 @@
-package com.lsy.superlotto.base
+package com.lsy.baselib.base
 
 import android.content.Context
 import android.view.LayoutInflater

@@ -11,11 +11,9 @@ import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.lottodata.db.entity.enums.EnumLottoPosition
 import com.lsy.superlotto.Common
 import com.lsy.superlotto.R
-import com.lsy.superlotto.base.BaseAdapter
+import com.lsy.baselib.base.BaseAdapter
 import com.lsy.superlotto.databinding.ItemDoubleLottoBinding
 import java.util.*
-import kotlin.collections.ArrayList
-import kotlin.math.min
 
 /**
  * @author Xuwl

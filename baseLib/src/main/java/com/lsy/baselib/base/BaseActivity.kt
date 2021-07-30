@@ -1,11 +1,10 @@
-package com.lsy.superlotto.base
+package com.lsy.baselib.base
 
 import androidx.appcompat.app.AppCompatActivity
 import androidx.databinding.DataBindingUtil
 import androidx.databinding.ViewDataBinding
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelLazy
-import com.lsy.superlotto.BR
 import kotlin.reflect.KClass
 
 /**
@@ -26,13 +25,9 @@ open abstract class BaseActivity<T : ViewDataBinding, VM : ViewModel>(vmClasz: K
         binding.lifecycleOwner = this
     }
 
-    protected fun setBindingView(layoutRes: Int, viewModel: ViewModel) {
-        setBindingView(layoutRes, BR.viewModel, viewModel)
-    }
-
     protected fun setBindingView(layoutRes: Int, variableId: Int, viewModel: ViewModel) {
         binding = DataBindingUtil.setContentView(this, layoutRes)
-        binding.setVariable(BR.viewModel, viewModel)
+        binding.setVariable(variableId, viewModel)
         binding.lifecycleOwner = this
     }
 }

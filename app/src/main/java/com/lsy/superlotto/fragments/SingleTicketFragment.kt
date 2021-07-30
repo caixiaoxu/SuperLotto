@@ -2,6 +2,7 @@ package com.lsy.superlotto.fragments
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
+import com.lsy.superlotto.BR
 import com.lsy.superlotto.R
 import com.lsy.superlotto.adapter.SingleLottoAdapter
 import com.lsy.superlotto.databinding.FragmentTicketBinding

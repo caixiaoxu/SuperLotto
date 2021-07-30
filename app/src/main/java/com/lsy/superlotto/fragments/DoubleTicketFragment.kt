@@ -2,6 +2,7 @@ package com.lsy.superlotto.fragments
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
+import com.lsy.superlotto.BR
 import com.lsy.superlotto.R
 import com.lsy.superlotto.adapter.DoubleLottoAdapter
 import com.lsy.superlotto.adapter.SingleLottoAdapter
@@ -18,6 +19,7 @@ class DoubleTicketFragment :
     protected val addTicketDialog: AddTicketDialog by lazy { AddTicketDialog(EnumLottoType.DOUBLE) }
 
     override fun layoutViewId(): Int = R.layout.fragment_ticket
+
     override fun initView() {
         binding?.rvTicketLotto?.let { rv ->
             rv.layoutManager = LinearLayoutManager(context)
