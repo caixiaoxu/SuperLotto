@@ -1,0 +1,17 @@
+import com.frame.versionplugin.AndroidX
+
+plugins {
+    id 'com.android.library'
+    id 'version-plugin'
+    id 'kotlin-kapt'
+}
+
+android {
+    dataBinding {
+        enabled = true
+    }
+}
+dependencies {
+    implementation project(path: ':baseLib')
+    implementation project(path: ':baseBusiness')
+}

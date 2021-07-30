@@ -159,6 +159,7 @@ class VersionConfigPlugin : Plugin<Project> {
             add(implementation, Kotlin.kotlin_stdlib)
             add(implementation, AndroidX.coreKtx)
             add(implementation, AndroidX.appcompat)
+            add(implementation, AndroidX.constraintlayout)
             add(implementation, Google.material)
             configTestDependencies()
         }

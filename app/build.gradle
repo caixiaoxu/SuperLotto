@@ -18,6 +18,7 @@ android {
 dependencies {
     implementation project(path: ':lottoData')
     implementation project(path: ':baseLib')
+    implementation project(path: ':baseBusiness')
+    implementation project(path: ':historyLotto')
     kapt AndroidX.roomCompiler
-
 }

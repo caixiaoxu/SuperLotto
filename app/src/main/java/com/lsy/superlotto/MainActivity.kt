@@ -11,7 +11,7 @@ class MainActivity : BaseActivity<ActivityMainBinding, MainViewModel>(MainViewMo
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setBindingView(R.layout.activity_main, BR.viewModel, viewModel)
+        setBindingView(R.layout.activity_main, BR.viewModel)
         initViewPager2()
     }
 

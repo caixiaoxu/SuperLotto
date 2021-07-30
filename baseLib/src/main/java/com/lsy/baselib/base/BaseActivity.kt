@@ -25,7 +25,7 @@ open abstract class BaseActivity<T : ViewDataBinding, VM : ViewModel>(vmClasz: K
         binding.lifecycleOwner = this
     }
 
-    protected fun setBindingView(layoutRes: Int, variableId: Int, viewModel: ViewModel) {
+    protected fun setBindingView(layoutRes: Int, variableId: Int) {
         binding = DataBindingUtil.setContentView(this, layoutRes)
         binding.setVariable(variableId, viewModel)
         binding.lifecycleOwner = this

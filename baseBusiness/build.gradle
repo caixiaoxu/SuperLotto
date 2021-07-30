@@ -1,0 +1,10 @@
+plugins {
+    id 'com.android.library'
+    id 'version-plugin'
+}
+
+android {
+    dataBinding {
+        enabled = true
+    }
+}
