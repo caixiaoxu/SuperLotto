@@ -24,4 +24,15 @@ object AndroidX {
     val roomKtx = "androidx.room:room-ktx:$room_version"
     val roomRxjava3 = "androidx.room:room-rxjava3:$room_version"
     val roomGuava = "androidx.room:room-guava:$room_version"
+
+    val paging_version = "3.0.0"
+    val paging = "androidx.paging:paging-runtime:$paging_version"
+    val paging_common_test = "androidx.paging:paging-common:$paging_version"
+    val paging_rxjava2 = "androidx.paging:paging-rxjava2:$paging_version"
+    val paging_rxjava3 = "androidx.paging:paging-rxjava3:$paging_version"
+    val paging_guava = "androidx.paging:paging-guava:$paging_version"
+    val paging_compose = "androidx.paging:paging-compose:1.0.0-alpha11"
+
+    val datastore_version = "1.0.0-rc01"
+    val datastore = "androidx.datastore:datastore:$datastore_version"
 }

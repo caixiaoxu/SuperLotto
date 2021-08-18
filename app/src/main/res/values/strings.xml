@@ -10,4 +10,17 @@
 
     <string name="lotto_before">前区</string>
     <string name="lotto_after">后区</string>
+
+    <string-array name="lottery_class_amount">
+        <item></item>
+        <item>浮动奖金</item>
+        <item>浮动奖金</item>
+        <item>10000元</item>
+        <item>3000元</item>
+        <item>300元</item>
+        <item>200元</item>
+        <item>100元</item>
+        <item>15元</item>
+        <item>5元</item>
+    </string-array>
 </resources>

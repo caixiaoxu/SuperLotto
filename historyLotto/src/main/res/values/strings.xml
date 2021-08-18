@@ -9,5 +9,6 @@
         <item>一年内</item>
         <item>二年内</item>
         <item>三年内</item>
+        <item>全部</item>
     </string-array>
 </resources>

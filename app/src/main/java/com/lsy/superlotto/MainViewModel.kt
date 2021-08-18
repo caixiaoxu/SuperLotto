@@ -1,5 +1,7 @@
 package com.lsy.superlotto
 
+import android.app.Application
+import androidx.core.content.res.ResourcesCompat
 import androidx.lifecycle.*
 import com.lsy.lottodata.db.DBManager
 import com.lsy.lottodata.db.entity.LotteryNumber
@@ -17,7 +19,7 @@ import kotlin.collections.ArrayList
  * @date 2021/6/21
  *
  */
-class MainViewModel : ViewModel() {
+class MainViewModel(application: Application) : AndroidViewModel(application) {
     val lottery: MutableLiveData<LotteryNumber> = MutableLiveData()
     val ticketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
     val singleTicketList: MutableLiveData<List<LottoTicket>> = MutableLiveData()
@@ -233,7 +235,9 @@ class MainViewModel : ViewModel() {
         val sb = StringBuilder()
         for (i in 1 until winClass.size) {
             if (winClass[i] > 0) {
-                sb.append("${i}等奖-> ${winClass[i]}注\n")
+                sb.append("${i}等奖-> ${winClass[i]}注，")
+                    .append(getApplication<Application>().resources.getStringArray(R.array.lottery_class_amount)[i])
+                    .append("\n")
             }
         }
 

@@ -31,4 +31,6 @@ dependencies {
     implementation AndroidX.roomGuava
 //    implementation AndroidX.roomRxjava3
     implementation Kotlin.kotlin_coroutines
+
+    implementation AndroidX.paging
 }

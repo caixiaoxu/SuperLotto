@@ -15,4 +15,7 @@ dependencies {
     implementation project(path: ':baseLib')
     implementation project(path: ':baseBusiness')
     implementation project(path: ':lottoData')
+
+    implementation AndroidX.paging
+    implementation AndroidX.paging_guava
 }

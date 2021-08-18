@@ -22,6 +22,9 @@ class HistoryActivity :
         initList()
     }
 
+    /**
+     * 实始化时间下拉框
+     */
     private fun initSpinner() {
         binding.spinnerFilterTime.apply {
             //设置下拉框默认的显示第一项
@@ -39,7 +42,13 @@ class HistoryActivity :
         }
     }
 
+    /**
+     * 初始化列表
+     */
     private fun initList() {
         binding.rvHistoryList.adapter = HistoryAdapter(this)
+        viewModel.lotteryLiveData.observe(this) {
+            (binding.rvHistoryList.adapter as HistoryAdapter).submitData(lifecycle, it)
+        }
     }
 }
