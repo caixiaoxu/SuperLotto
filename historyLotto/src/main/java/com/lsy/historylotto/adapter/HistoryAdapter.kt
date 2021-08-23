@@ -27,21 +27,21 @@ class HistoryAdapter(context: Context?) :
 
     }) {
     private var total: Int? = null
-    private val beforeNumMap = HashMap<String, Int>(35)
-    private val afterNumMap = HashMap<String, Int>(12)
+    private val beforeNumMap = HashMap<String, Double>(35)
+    private val afterNumMap = HashMap<String, Double>(12)
 
     private fun getTotoal(): Int {
         return total ?: DBManager.db.lotteryNumberDao().queryTotalCount()
     }
 
-    private fun getBeforeNumProbability(num: String): Int {
+    private fun getBeforeNumProbability(num: String): Double {
         return beforeNumMap[num] ?: DBManager.db.lotteryNumberDao()
-            .queryBeforeCountOfNum(num) * 100 / getTotoal()
+            .queryBeforeCountOfNum(num) * 1000 / getTotoal() / 10.0
     }
 
-    private fun getAfterNumProbability(num: String): Int {
+    private fun getAfterNumProbability(num: String): Double {
         return afterNumMap[num] ?: DBManager.db.lotteryNumberDao()
-            .queryAfterCountOfNum(num) * 100 / getTotoal()
+            .queryAfterCountOfNum(num) * 1000 / getTotoal() / 10.0
     }
 
     /**
@@ -66,11 +66,11 @@ class HistoryAdapter(context: Context?) :
                     "${item.num6},${item.num7}"
             } else {
                 binding.historyTvItemHistoryBeforeLottery.text =
-                    "${getBeforeNumProbability(item.num1)},${getBeforeNumProbability(item.num2)}," +
-                            "${getBeforeNumProbability(item.num3)},${getBeforeNumProbability(item.num4)}," +
-                            "${getBeforeNumProbability(item.num5)}"
+                    "${getBeforeNumProbability(item.num1)}%,${getBeforeNumProbability(item.num2)}%," +
+                            "${getBeforeNumProbability(item.num3)}%,${getBeforeNumProbability(item.num4)}%," +
+                            "${getBeforeNumProbability(item.num5)}%"
                 binding.historyTvItemHistoryAfterLottery.text =
-                    "${getAfterNumProbability(item.num6)},${getAfterNumProbability(item.num7)}"
+                    "${getAfterNumProbability(item.num6)}%,${getAfterNumProbability(item.num7)}%"
             }
         }
     }

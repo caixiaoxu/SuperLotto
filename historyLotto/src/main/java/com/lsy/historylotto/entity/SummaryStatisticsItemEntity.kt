@@ -8,5 +8,5 @@ package com.lsy.historylotto.entity
 data class SummaryStatisticsItemEntity(
     var title: String,
     var count: Int,
-    var probability: Int,
+    var probability: Double,
 )
