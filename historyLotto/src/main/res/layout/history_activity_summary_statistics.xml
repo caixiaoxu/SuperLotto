@@ -1,0 +1,89 @@
+<?xml version="1.0" encoding="utf-8"?>
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:background="@color/main_bg">
+
+        <View
+            android:id="@+id/view_title_bg"
+            android:layout_width="match_parent"
+            android:layout_height="@dimen/height_title_h"
+            android:background="@color/head_title_bg"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ib_statistics_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="5dp"
+            android:background="@null"
+            android:padding="10dp"
+            android:src="@mipmap/icon_back"
+            app:layout_constraintBottom_toBottomOf="@id/view_title_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/view_title_bg" />
+
+        <TextView
+            style="@style/baseHeadTitleStyle"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/history_summary_statistics"
+            app:layout_constraintBottom_toBottomOf="@id/view_title_bg"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/view_title_bg" />
+
+        <TextView
+            android:id="@+id/history_tv_statistices_before_title"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#BDBDBD"
+            android:gravity="center"
+            android:text="前区"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/view_title_bg" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_statistics_before_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toTopOf="@id/gl_split"
+            app:layout_constraintTop_toBottomOf="@id/history_tv_statistices_before_title"
+            app:spanCount="2" />
+
+        <androidx.constraintlayout.widget.Guideline
+            android:id="@+id/gl_split"
+            android:layout_width="match_parent"
+            android:layout_height="1dp"
+            android:orientation="horizontal"
+            app:layout_constraintGuide_percent="0.6" />
+
+        <TextView
+            android:id="@+id/history_tv_statistices_after_title"
+            android:layout_width="match_parent"
+            android:layout_height="36dp"
+            android:background="#BDBDBD"
+            android:gravity="center"
+            android:text="后区"
+            android:textColor="@color/white"
+            android:textSize="16sp"
+            app:layout_constraintTop_toBottomOf="@id/gl_split" />
+
+        <androidx.recyclerview.widget.RecyclerView
+            android:id="@+id/rv_statistics_after_list"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:padding="10dp"
+            app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/history_tv_statistices_after_title"
+            app:spanCount="2" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+</layout>

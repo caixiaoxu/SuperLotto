@@ -18,17 +18,27 @@
         <View
             android:id="@+id/view_title_bg"
             android:layout_width="match_parent"
-            android:layout_height="64dp"
-            android:background="#FF0040"
+            android:layout_height="@dimen/height_title_h"
+            android:background="@color/head_title_bg"
             app:layout_constraintTop_toTopOf="parent" />
+
+        <ImageButton
+            android:id="@+id/ib_history_back"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="@null"
+            android:padding="10dp"
+            android:layout_marginStart="5dp"
+            android:src="@mipmap/icon_back"
+            app:layout_constraintBottom_toBottomOf="@id/view_title_bg"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="@id/view_title_bg" />
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/history_title"
-            android:textColor="@color/white"
-            android:textSize="21sp"
-            android:textStyle="bold"
+            style="@style/baseHeadTitleStyle"
             app:layout_constraintBottom_toBottomOf="@id/view_title_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
@@ -38,11 +48,8 @@
             android:id="@+id/tv_history_statistics"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:text="@string/statistics"
-            android:textColor="@color/white"
-            android:textSize="16sp"
-            android:textStyle="bold"
+            android:text="@string/history_summary_statistics"
+            style="@style/baseHeadTitleRightStyle"
             app:layout_constraintBottom_toBottomOf="@id/view_title_bg"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintTop_toTopOf="@id/view_title_bg" />
@@ -64,9 +71,9 @@
             android:background="@null"
             android:dropDownVerticalOffset="36dp"
             android:elevation="3dp"
-            android:entries="@array/lotto_time"
+            android:entries="@array/history_lotto_time"
             android:paddingEnd="16dp"
-            android:prompt="@string/select_time"
+            android:prompt="@string/history_select_time"
             android:spinnerMode="dropdown"
             app:layout_constraintBottom_toBottomOf="@id/view_filter_bg"
             app:layout_constraintStart_toStartOf="@id/view_filter_bg"
@@ -80,6 +87,17 @@
             app:layout_constraintBottom_toBottomOf="@id/spinner_filter_time"
             app:layout_constraintEnd_toEndOf="@id/spinner_filter_time"
             app:layout_constraintTop_toTopOf="@id/spinner_filter_time" />
+
+        <Switch
+            android:id="@+id/switch_change_list_model"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:elevation="3dp"
+            android:layout_marginEnd="10dp"
+            android:orientation="horizontal"
+            app:layout_constraintBottom_toBottomOf="@id/view_filter_bg"
+            app:layout_constraintEnd_toEndOf="@id/view_filter_bg"
+            app:layout_constraintTop_toTopOf="@id/view_filter_bg"/>
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_history_list"

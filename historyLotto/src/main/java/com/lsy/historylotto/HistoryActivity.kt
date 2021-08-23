@@ -1,11 +1,14 @@
 package com.lsy.historylotto
 
+import android.content.Intent
 import android.os.Bundle
 import android.view.View
 import android.widget.AdapterView
+import androidx.core.app.ActivityCompat
 import com.lsy.baselib.base.BaseActivity
 import com.lsy.historylotto.adapter.HistoryAdapter
 import com.lsy.historylotto.databinding.HistoryActivityHistoryBinding
+import com.lsy.historylotto.ui.SummaryStatisticsActivity
 
 /**
  * @author Xuwl
@@ -18,6 +21,21 @@ class HistoryActivity :
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setBindingView(R.layout.history_activity_history, BR.vm)
+        initView()
+    }
+
+    private fun initView() {
+        binding.ibHistoryBack.setOnClickListener {
+            onBackPressed()
+        }
+        binding.tvHistoryStatistics.setOnClickListener {
+            ActivityCompat.startActivity(this,
+                Intent(this, SummaryStatisticsActivity::class.java),
+                null)
+        }
+        binding.switchChangeListModel.setOnCheckedChangeListener { _, _ ->
+            (binding.rvHistoryList.adapter as HistoryAdapter).changeModel()
+        }
         initSpinner()
         initList()
     }

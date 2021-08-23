@@ -4,7 +4,7 @@ import android.content.Context
 import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.superlotto.BR
 import com.lsy.superlotto.R
-import com.lsy.baselib.base.BaseAdapter
+import com.lsy.baselib.base.BaseSingleAdapter
 import com.lsy.superlotto.databinding.ItemAddTicketBinding
 
 /**
@@ -12,8 +12,8 @@ import com.lsy.superlotto.databinding.ItemAddTicketBinding
  * @date 2021/7/1
  *
  */
-class AddLottoAdapter(mContext: Context?) :
-    BaseAdapter<ItemAddTicketBinding, SelfLottoNumber>(mContext, null) {
+class AddLottoSingleAdapter(mContext: Context?) :
+    BaseSingleAdapter<ItemAddTicketBinding, SelfLottoNumber>(mContext, null) {
     init {
         addOneLottoNumber()
     }

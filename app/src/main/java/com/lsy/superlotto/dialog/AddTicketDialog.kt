@@ -14,7 +14,7 @@ import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
 import com.lsy.superlotto.Common
 import com.lsy.superlotto.R
-import com.lsy.superlotto.adapter.AddLottoAdapter
+import com.lsy.superlotto.adapter.AddLottoSingleAdapter
 import com.lsy.superlotto.databinding.DialogAddTicketBinding
 import java.util.*
 
@@ -53,9 +53,9 @@ class AddTicketDialog(private val ticketType: EnumLottoType) : DialogFragment() 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         binding.rvTicketItem.layoutManager = LinearLayoutManager(context)
-        binding.rvTicketItem.adapter = AddLottoAdapter(context)
+        binding.rvTicketItem.adapter = AddLottoSingleAdapter(context)
         binding.ibTicketLottoAdd.setOnClickListener {
-            if (!(binding.rvTicketItem.adapter as AddLottoAdapter).addOneLottoNumber()) {
+            if (!(binding.rvTicketItem.adapter as AddLottoSingleAdapter).addOneLottoNumber()) {
                 ToastUtil.showToast(requireContext(), "一次最多加10个")
             }
         }
@@ -75,7 +75,7 @@ class AddTicketDialog(private val ticketType: EnumLottoType) : DialogFragment() 
                 return@setOnClickListener
             }
 
-            val list = (binding.rvTicketItem.adapter as AddLottoAdapter).getLottoNumberList()
+            val list = (binding.rvTicketItem.adapter as AddLottoSingleAdapter).getLottoNumberList()
             val iterator = list.iterator()
             while (iterator.hasNext()) {
                 val number = iterator.next()

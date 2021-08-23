@@ -7,7 +7,7 @@ import com.lsy.lottodata.db.entity.SelfLottoNumber
 import com.lsy.lottodata.db.entity.enums.EnumLottoPosition
 import com.lsy.superlotto.Common
 import com.lsy.superlotto.R
-import com.lsy.baselib.base.BaseAdapter
+import com.lsy.baselib.base.BaseSingleAdapter
 import com.lsy.superlotto.databinding.ItemSingleLottoBinding
 import java.util.*
 
@@ -16,8 +16,8 @@ import java.util.*
  * @date 2021/6/25
  *
  */
-class SingleLottoAdapter(mContext: Context?, mList: List<SelfLottoNumber>?) :
-    BaseAdapter<ItemSingleLottoBinding, SelfLottoNumber>(mContext, mList) {
+class SingleLottoSingleAdapter(mContext: Context?, mList: List<SelfLottoNumber>?) :
+    BaseSingleAdapter<ItemSingleLottoBinding, SelfLottoNumber>(mContext, mList) {
 
     var mLotteryNumber: LotteryNumber? = null
 

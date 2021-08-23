@@ -2,10 +2,8 @@ package com.lsy.superlotto.fragments
 
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.lsy.lottodata.db.entity.enums.EnumLottoType
-import com.lsy.superlotto.BR
 import com.lsy.superlotto.R
-import com.lsy.superlotto.adapter.DoubleLottoAdapter
-import com.lsy.superlotto.adapter.SingleLottoAdapter
+import com.lsy.superlotto.adapter.DoubleLottoSingleAdapter
 import com.lsy.superlotto.databinding.FragmentTicketBinding
 import com.lsy.superlotto.dialog.AddTicketDialog
 
@@ -23,7 +21,7 @@ class DoubleTicketFragment :
     override fun initView() {
         binding?.rvTicketLotto?.let { rv ->
             rv.layoutManager = LinearLayoutManager(context)
-            rv.adapter = DoubleLottoAdapter(context, null).apply {
+            rv.adapter = DoubleLottoSingleAdapter(context, null).apply {
                 mLotteryNumber = mMainViewModel.lottery.value
             }
         }
@@ -41,14 +39,14 @@ class DoubleTicketFragment :
 
     override fun initData() {
         mMainViewModel.lottery.observe(this) {
-            (binding?.rvTicketLotto?.adapter as? DoubleLottoAdapter)?.mLotteryNumber = it
+            (binding?.rvTicketLotto?.adapter as? DoubleLottoSingleAdapter)?.mLotteryNumber = it
         }
         mMainViewModel.doubleTicketList.observe(this) {
             viewModel.mTicketList.postValue(it)
             viewModel.getTypeLottoList(it)
         }
         viewModel.mLottoList.observe(this) {
-            (binding?.rvTicketLotto?.adapter as? DoubleLottoAdapter)?.setList(it)
+            (binding?.rvTicketLotto?.adapter as? DoubleLottoSingleAdapter)?.setList(it)
             if (!it.isNullOrEmpty()) {
                 mMainViewModel.dealDoubleWinResult(it)
             }

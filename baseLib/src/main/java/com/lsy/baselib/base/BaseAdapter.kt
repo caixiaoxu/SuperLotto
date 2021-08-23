@@ -10,34 +10,18 @@ import androidx.recyclerview.widget.RecyclerView
 
 /**
  * @author Xuwl
- * @date 2021/6/25
+ * @date 2021/8/23
  *
  */
-abstract class BaseAdapter<T : ViewDataBinding, M>(
-    val mContext: Context?, list: List<M>?,
-) : RecyclerView.Adapter<BaseAdapter.BaseBindingViewHolder>() {
+abstract class BaseAdapter<M>(val mContext: Context?, list: List<M>? = null) :
+    RecyclerView.Adapter<BaseAdapter.BaseViewHolder>() {
     protected val mList: MutableList<M> = ArrayList()
 
     init {
-        setList(list)
+        list?.let {
+            setList(list)
+        }
     }
-
-    abstract fun getItemLayoutId(viewType: Int): Int
-
-    protected abstract fun onBindItem(binding: T?, item: M?)
-
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseBindingViewHolder {
-        val binding: T = DataBindingUtil.inflate(LayoutInflater.from(this.mContext),
-            getItemLayoutId(viewType), parent, false)
-        return BaseBindingViewHolder(binding.root)
-    }
-
-    override fun onBindViewHolder(holder: BaseBindingViewHolder, position: Int) {
-        val binding: T? = DataBindingUtil.getBinding(holder.itemView)
-        onBindItem(binding, mList[position])
-    }
-
-    override fun getItemCount(): Int = mList.size
 
     fun setList(list: List<M>?) {
         mList.clear()
@@ -51,5 +35,16 @@ abstract class BaseAdapter<T : ViewDataBinding, M>(
         mList.add(item)
     }
 
-    class BaseBindingViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
+    abstract fun getItemLayoutId(viewType: Int): Int
+
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): BaseViewHolder {
+        val binding: ViewDataBinding = DataBindingUtil.inflate(LayoutInflater.from(this.mContext),
+            getItemLayoutId(viewType), parent, false)
+        return BaseViewHolder(binding.root)
+    }
+
+    override fun getItemCount(): Int = mList.size
+
+
+    class BaseViewHolder(itemView: View) : RecyclerView.ViewHolder(itemView) {}
 }

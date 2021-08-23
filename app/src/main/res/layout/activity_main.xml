@@ -15,7 +15,7 @@
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:background="#084B8A"
+        android:background="@color/main_bg"
         tools:context=".MainActivity">
 
         <ImageButton

@@ -4,5 +4,6 @@
 
     <application>
         <activity android:name=".HistoryActivity"/>
+        <activity android:name=".ui.SummaryStatisticsActivity"/>
     </application>
 </manifest>
