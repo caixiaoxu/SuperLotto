@@ -60,18 +60,37 @@ class HistoryAdapter(context: Context?) :
         if (null != binding && null != item) {
             binding.setVariable(BR.vm, item)
             if (0 == model) {
-                binding.historyTvItemHistoryBeforeLottery.text =
-                    "${item.num1},${item.num2},${item.num3},${item.num4},${item.num5}"
-                binding.historyTvItemHistoryAfterLottery.text =
-                    "${item.num6},${item.num7}"
+                setLotteryLists(binding,
+                    item.num1, item.num2, item.num3, item.num4, item.num5, item.num6, item.num7)
             } else {
-                binding.historyTvItemHistoryBeforeLottery.text =
-                    "${getBeforeNumProbability(item.num1)},${getBeforeNumProbability(item.num2)}," +
-                            "${getBeforeNumProbability(item.num3)},${getBeforeNumProbability(item.num4)}," +
-                            "${getBeforeNumProbability(item.num5)}"
-                binding.historyTvItemHistoryAfterLottery.text =
-                    "${getAfterNumProbability(item.num6)},${getAfterNumProbability(item.num7)}"
+                setLotteryLists(binding,
+                    "${getBeforeNumProbability(item.num1)}",
+                    "${getBeforeNumProbability(item.num2)}",
+                    "${getBeforeNumProbability(item.num3)}",
+                    "${getBeforeNumProbability(item.num4)}",
+                    "${getBeforeNumProbability(item.num5)}",
+                    "${getAfterNumProbability(item.num6)}",
+                    "${getAfterNumProbability(item.num7)}")
             }
         }
+    }
+
+    private fun setLotteryLists(
+        binding: HistoryItemHistoryBinding,
+        num1: String,
+        num2: String,
+        num3: String,
+        num4: String,
+        num5: String,
+        num6: String,
+        num7: String,
+    ) {
+        binding.historyTvItemHistoryBeforeNum1.text = num1
+        binding.historyTvItemHistoryBeforeNum2.text = num2
+        binding.historyTvItemHistoryBeforeNum3.text = num3
+        binding.historyTvItemHistoryBeforeNum4.text = num4
+        binding.historyTvItemHistoryBeforeNum5.text = num5
+        binding.historyTvItemHistoryAfterNum1.text = num6
+        binding.historyTvItemHistoryAfterNum2.text = num7
     }
 }

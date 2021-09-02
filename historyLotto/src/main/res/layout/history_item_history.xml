@@ -25,29 +25,76 @@
             tools:text="21032" />
 
         <TextView
-            android:id="@+id/history_tv_item_history_before_lottery"
+            android:id="@+id/history_tv_item_history_before_num1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:gravity="start|center_vertical"
-            android:paddingStart="10dp"
+            android:layout_marginStart="10dp"
+            android:gravity="center"
             android:textSize="16sp"
-            app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_after_lottery"
-            app:layout_constraintHorizontal_weight="2.5"
+            app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num2"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_nper"
-            tools:text="01,02,03,04,05" />
+            tools:text="01" />
 
         <TextView
-            android:id="@+id/history_tv_item_history_after_lottery"
+            android:id="@+id/history_tv_item_history_before_num2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num3"
+            app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num1"
+            tools:text="02" />
+
+        <TextView
+            android:id="@+id/history_tv_item_history_before_num3"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num4"
+            app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num2"
+            tools:text="03" />
+
+        <TextView
+            android:id="@+id/history_tv_item_history_before_num4"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num5"
+            app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num3"
+            tools:text="03" />
+
+        <TextView
+            android:id="@+id/history_tv_item_history_before_num5"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_after_num1"
+            app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num4"
+            tools:text="03" />
+
+        <TextView
+            android:id="@+id/history_tv_item_history_after_num1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:layout_marginStart="20dp"
-            android:gravity="start|center_vertical"
-            android:paddingEnd="10dp"
+            android:gravity="center"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_after_num2"
+            app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num5"
+            tools:text="01" />
+
+        <TextView
+            android:id="@+id/history_tv_item_history_after_num2"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:gravity="center"
             android:textSize="16sp"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintHorizontal_weight="1"
-            app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_lottery"
-            tools:text="01,02" />
+            app:layout_constraintStart_toEndOf="@id/history_tv_item_history_after_num1"
+            tools:text="02" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>
