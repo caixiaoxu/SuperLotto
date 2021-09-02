@@ -8,6 +8,7 @@ import com.lsy.lottodata.db.DBManager
 import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import java.text.NumberFormat
 
 /**
  * @author Xuwl
@@ -46,7 +47,7 @@ class SummaryStatisticsViewModel : ViewModel() {
                 val count =
                     if (0 == type) DBManager.db.lotteryNumberDao().queryBeforeCountOfNumSync(num)
                     else DBManager.db.lotteryNumberDao().queryAfterCountOfNumSync(num)
-                val probability = count * 100 / total
+                val probability = count * 10000 / total / 100.0
                 list.add(SummaryStatisticsItemEntity(num, count, probability))
             }
             return@withContext list

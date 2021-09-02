@@ -16,7 +16,7 @@
 
         <TextView
             android:id="@+id/history_tv_item_history_nper"
-            android:layout_width="64dp"
+            android:layout_width="60dp"
             android:layout_height="match_parent"
             android:gravity="center"
             android:text="@{vm.nper}"
@@ -28,9 +28,9 @@
             android:id="@+id/history_tv_item_history_before_num1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="10dp"
+            android:layout_marginStart="6dp"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num2"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_nper"
             tools:text="01" />
@@ -40,7 +40,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num3"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num1"
             tools:text="02" />
@@ -50,7 +50,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num4"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num2"
             tools:text="03" />
@@ -60,7 +60,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_before_num5"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num3"
             tools:text="03" />
@@ -70,7 +70,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_after_num1"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num4"
             tools:text="03" />
@@ -79,9 +79,9 @@
             android:id="@+id/history_tv_item_history_after_num1"
             android:layout_width="0dp"
             android:layout_height="match_parent"
-            android:layout_marginStart="20dp"
+            android:layout_marginStart="6dp"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toStartOf="@id/history_tv_item_history_after_num2"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_before_num5"
             tools:text="01" />
@@ -91,7 +91,7 @@
             android:layout_width="0dp"
             android:layout_height="match_parent"
             android:gravity="center"
-            android:textSize="16sp"
+            android:textSize="15sp"
             app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toEndOf="@id/history_tv_item_history_after_num1"
             tools:text="02" />
