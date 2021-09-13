@@ -99,17 +99,23 @@
             app:layout_constraintEnd_toEndOf="@id/view_filter_bg"
             app:layout_constraintTop_toTopOf="@id/view_filter_bg"/>
 
+        <include
+            android:id="@+id/history_tv_item_titles"
+            layout="@layout/history_item_history"
+            android:layout_width="match_parent"
+            android:elevation="3dp"
+            android:layout_height="48dp"
+            android:layout_marginTop="10dp"
+            app:layout_constraintTop_toBottomOf="@id/view_filter_bg" />
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/rv_history_list"
             android:layout_width="match_parent"
             android:layout_height="0dp"
-            android:layout_marginTop="10dp"
-            android:background="@color/white"
-            android:elevation="3dp"
             android:outlineProvider="background"
             app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager"
             app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/view_filter_bg" />
+            app:layout_constraintTop_toBottomOf="@id/history_tv_item_titles" />
 
     </androidx.constraintlayout.widget.ConstraintLayout>
 </layout>

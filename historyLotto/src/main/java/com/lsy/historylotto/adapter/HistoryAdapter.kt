@@ -36,12 +36,12 @@ class HistoryAdapter(context: Context?) :
 
     private fun getBeforeNumProbability(nper: String, num: String): Double {
         return beforeNumMap[nper + num] ?: DBManager.db.lotteryNumberDao()
-            .queryBeforeCountOfNumUntilNper(nper,num) * 1000 / getTotoal(nper) / 10.0
+            .queryBeforeCountOfNumUntilNper(nper, num) * 10000 / getTotoal(nper) / 100.0
     }
 
     private fun getAfterNumProbability(nper: String, num: String): Double {
         return afterNumMap[nper + num] ?: DBManager.db.lotteryNumberDao()
-            .queryAfterCountOfNumUntilNper(nper, num) * 1000 / getTotoal(nper) / 10.0
+            .queryAfterCountOfNumUntilNper(nper, num) * 10000 / getTotoal(nper) / 100.0
     }
 
     /**
@@ -58,22 +58,23 @@ class HistoryAdapter(context: Context?) :
 
     override fun onBindItem(binding: HistoryItemHistoryBinding?, item: LotteryNumber?) {
         if (null != binding && null != item) {
-            binding.setVariable(BR.vm, item)
+            binding.historyTvItemHistoryNper.text = item.nper
             if (0 == model) {
                 setLotteryLists(binding,
                     item.num1, item.num2, item.num3, item.num4, item.num5, item.num6, item.num7)
             } else {
-                setLotteryLists(binding,
-                    "${getBeforeNumProbability(item.nper,item.num1)}%",
-                    "${getBeforeNumProbability(item.nper,item.num2)}%",
-                    "${getBeforeNumProbability(item.nper,item.num3)}%",
-                    "${getBeforeNumProbability(item.nper,item.num4)}%",
-                    "${getBeforeNumProbability(item.nper,item.num5)}%",
-                    "${getAfterNumProbability(item.nper,item.num6)}%",
-                    "${getAfterNumProbability(item.nper,item.num7)}%")
+                setLotteryLists(binding, formatNum(getBeforeNumProbability(item.nper, item.num1)),
+                    formatNum(getBeforeNumProbability(item.nper, item.num2)),
+                    formatNum(getBeforeNumProbability(item.nper, item.num3)),
+                    formatNum(getBeforeNumProbability(item.nper, item.num4)),
+                    formatNum(getBeforeNumProbability(item.nper, item.num5)),
+                    formatNum(getAfterNumProbability(item.nper, item.num6)),
+                    formatNum(getAfterNumProbability(item.nper, item.num7)))
             }
         }
     }
+
+    private fun formatNum(num: Double): String = String.format("%.2f", num)
 
     private fun setLotteryLists(
         binding: HistoryItemHistoryBinding,
