@@ -29,17 +29,26 @@ interface LotteryNumberDao {
     @Query("SELECT COUNT(*) FROM Lottery")
     fun queryTotalCount(): Int
 
+    @Query("SELECT COUNT(*) FROM Lottery WHERE nper <= :nper")
+    fun queryTotalCountUntilNper(nper: String): Int
+
     @Query("SELECT COUNT(*) FROM Lottery WHERE num1=:num OR num2=:num OR num3=:num OR num4=:num OR num5=:num")
     suspend fun queryBeforeCountOfNumSync(num: String): Int
 
     @Query("SELECT COUNT(*) FROM Lottery WHERE num1=:num OR num2=:num OR num3=:num OR num4=:num OR num5=:num")
     fun queryBeforeCountOfNum(num: String): Int
 
+    @Query("SELECT COUNT(*) FROM Lottery WHERE nper <=:nper AND (num1=:num OR num2=:num OR num3=:num OR num4=:num OR num5=:num)")
+    fun queryBeforeCountOfNumUntilNper(nper: String, num: String): Int
+
     @Query("SELECT COUNT(*) FROM Lottery WHERE num6=:num OR num7=:num")
     suspend fun queryAfterCountOfNumSync(num: String): Int
 
     @Query("SELECT COUNT(*) FROM Lottery WHERE num6=:num OR num7=:num")
     fun queryAfterCountOfNum(num: String): Int
+
+    @Query("SELECT COUNT(*) FROM Lottery WHERE (num6=:num OR num7=:num) AND nper <=:nper")
+    fun queryAfterCountOfNumUntilNper(nper: String, num: String): Int
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertLotterysTable(vararg lottery: LotteryNumber)

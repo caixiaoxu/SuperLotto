@@ -26,22 +26,22 @@ class HistoryAdapter(context: Context?) :
         }
 
     }) {
-    private var total: Int? = null
+    private var total = HashMap<String, Int>()
     private val beforeNumMap = HashMap<String, Double>(35)
     private val afterNumMap = HashMap<String, Double>(12)
 
-    private fun getTotoal(): Int {
-        return total ?: DBManager.db.lotteryNumberDao().queryTotalCount()
+    private fun getTotoal(nper: String): Int {
+        return total[nper] ?: DBManager.db.lotteryNumberDao().queryTotalCountUntilNper(nper)
     }
 
-    private fun getBeforeNumProbability(num: String): Double {
-        return beforeNumMap[num] ?: DBManager.db.lotteryNumberDao()
-            .queryBeforeCountOfNum(num) * 1000 / getTotoal() / 10.0
+    private fun getBeforeNumProbability(nper: String, num: String): Double {
+        return beforeNumMap[nper + num] ?: DBManager.db.lotteryNumberDao()
+            .queryBeforeCountOfNumUntilNper(nper,num) * 1000 / getTotoal(nper) / 10.0
     }
 
-    private fun getAfterNumProbability(num: String): Double {
-        return afterNumMap[num] ?: DBManager.db.lotteryNumberDao()
-            .queryAfterCountOfNum(num) * 1000 / getTotoal() / 10.0
+    private fun getAfterNumProbability(nper: String, num: String): Double {
+        return afterNumMap[nper + num] ?: DBManager.db.lotteryNumberDao()
+            .queryAfterCountOfNumUntilNper(nper, num) * 1000 / getTotoal(nper) / 10.0
     }
 
     /**
@@ -64,13 +64,13 @@ class HistoryAdapter(context: Context?) :
                     item.num1, item.num2, item.num3, item.num4, item.num5, item.num6, item.num7)
             } else {
                 setLotteryLists(binding,
-                    "${getBeforeNumProbability(item.num1)}%",
-                    "${getBeforeNumProbability(item.num2)}%",
-                    "${getBeforeNumProbability(item.num3)}%",
-                    "${getBeforeNumProbability(item.num4)}%",
-                    "${getBeforeNumProbability(item.num5)}%",
-                    "${getAfterNumProbability(item.num6)}%",
-                    "${getAfterNumProbability(item.num7)}%")
+                    "${getBeforeNumProbability(item.nper,item.num1)}%",
+                    "${getBeforeNumProbability(item.nper,item.num2)}%",
+                    "${getBeforeNumProbability(item.nper,item.num3)}%",
+                    "${getBeforeNumProbability(item.nper,item.num4)}%",
+                    "${getBeforeNumProbability(item.nper,item.num5)}%",
+                    "${getAfterNumProbability(item.nper,item.num6)}%",
+                    "${getAfterNumProbability(item.nper,item.num7)}%")
             }
         }
     }
